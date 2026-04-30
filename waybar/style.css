@@ -1,0 +1,61 @@
+* {
+    font-family: "GeistMono Nerd Font";
+    font-size: 11px;
+    color: #dddddd;
+}
+
+window#waybar {
+    background: #000000;
+    border-bottom: 2px solid #4c4846;
+}
+
+#pulseaudio,
+#network,
+#memory {
+    padding: 0 10px;
+    margin: 2px 0;
+}
+
+#pulseaudio {
+    color: #a6e3a1;
+}
+
+#network {
+    color: #a6e3a1;
+}
+
+#memory {
+    color: #8b92a5;
+}
+
+#clock {
+    color: #dddddd;
+    padding: 0 14px;
+}
+
+#workspaces {
+    padding: 0 6px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    color: #8b92a5;
+    background: transparent;
+}
+
+#workspaces button.focused {
+    color: #a6e3a1;
+}
+
+#workspaces button.active {
+    color: #a6e3a1;
+}
+
+#workspaces button.urgent {
+    color: #f38ba8;
+}
+
+#workspaces button:hover {
+    color: #b5e8b0;
+    background: #3c3836;
+}

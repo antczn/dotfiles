@@ -1,0 +1,178 @@
+# =============================================================================
+# Sway Config — Minimalist
+# =============================================================================
+
+# ---------------------------------------------------------------------------
+# Variables
+# ---------------------------------------------------------------------------
+set $terminal foot
+set $browser helium
+set $editor zed
+set $game_client steam
+set $game_launcher prism-launcher
+set $launcher foot --title fsel -e fsel
+set $mod Mod4
+set $alt Mod1
+
+# ---------------------------------------------------------------------------
+# Font
+# ---------------------------------------------------------------------------
+font pango:GeistMono Nerd Font 11
+
+# ---------------------------------------------------------------------------
+# Output
+# ---------------------------------------------------------------------------
+output * bg #000000 solid_color
+
+# ---------------------------------------------------------------------------
+# Input
+# ---------------------------------------------------------------------------
+input type:keyboard {
+    xkb_layout us
+    repeat_delay 300
+    repeat_rate 40
+}
+
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+}
+
+# ---------------------------------------------------------------------------
+# Appearance
+# ---------------------------------------------------------------------------
+client.focused          #a6e3a1 #000000 #dddddd #a6e3a1
+client.unfocused        #4c4846 #000000 #8b92a5 #4c4846
+client.focused_inactive #4c4846 #000000 #8b92a5 #4c4846
+client.urgent           #f38ba8 #000000 #dddddd #f38ba8
+
+# ---------------------------------------------------------------------------
+# Gaps & Border
+# ---------------------------------------------------------------------------
+gaps inner 6
+gaps outer 4
+default_border pixel 2
+default_border_color #4c4846
+default_focused_border_color #a6e3a1
+
+# ---------------------------------------------------------------------------
+# Startup
+# ---------------------------------------------------------------------------
+exec systemctl --user import-environment WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd WAYLAND_DISPLAY SWAYSOCK
+
+exec swaymsg workspace 1; exec $terminal
+
+# ---------------------------------------------------------------------------
+# Workspace assignments
+# ---------------------------------------------------------------------------
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+
+assign [app_id="$browser"] $ws2
+assign [title=".*Helium.*"] $ws2
+assign [app_id="$editor"] $ws3
+assign [title=".*Zed.*"] $ws3
+assign [app_id="$game_client"] $ws4
+assign [app_id="$game_launcher"] $ws4
+assign [title=".*Steam.*"] $ws4
+assign [title=".*Prism.*"] $ws4
+
+# ---------------------------------------------------------------------------
+# Window rules
+# ---------------------------------------------------------------------------
+for_window [title="fsel"] floating enable, resize set 680 384
+
+# ---------------------------------------------------------------------------
+# Bar (Waybar)
+# ---------------------------------------------------------------------------
+bar {
+    swaybar_command waybar
+    position top
+    height 28
+    colors {
+        background #000000
+        statusline #dddddd
+        separator  #4c4846
+        focused_workspace  #a6e3a1 #000000 #a6e3a1
+        active_workspace   #4c4846 #000000 #dddddd
+        inactive_workspace #4c4846 #000000 #8b92a5
+        urgent_workspace   #f38ba8 #000000 #dddddd
+    }
+}
+
+# ---------------------------------------------------------------------------
+# Keybindings
+# ---------------------------------------------------------------------------
+
+# Launcher
+bindsym $mod+d exec $launcher
+
+# Terminal
+bindsym $mod+Return exec $terminal
+
+# Close focused window
+bindsym $mod+q kill
+
+# Move focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Split
+bindsym $mod+b splitting toggle
+bindsym $mod+v split v
+bindsym $mod+s split h
+
+# Fullscreen
+bindsym $mod+f fullscreen toggle
+
+# Floating toggle
+bindsym $mod+Shift+space floating toggle
+
+# Focus mode (tabbed / stacking)
+bindsym $mod+w tabbed
+bindsym $mod+e stacking
+
+# Workspace switching
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+
+# Move container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+
+# Scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+# Reload / Exit / Lock
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+e exec swaynag -t warning -m "Exit sway?" -B "Yes, exit" "swaymsg exit"
+bindsym $mod+Shift+l exec swaylock
+
+# Media keys
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+
+# Brightness (if applicable)
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-

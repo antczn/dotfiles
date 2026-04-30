@@ -1,0 +1,39 @@
+# Colors
+highlight_color = "#a6e3a1"
+cursor = "▌"
+
+# Border colors
+main_border_color = "#a6e3a1"
+apps_border_color = "#4c4846"
+input_border_color = "#4c4846"
+
+# Text colors
+main_text_color = "#dddddd"
+apps_text_color = "#dddddd"
+input_text_color = "#dddddd"
+header_title_color = "#a6e3a1"
+
+# Pin
+pin_color = "#a6e3a1"
+pin_icon = " "
+
+# UI
+rounded_borders = false
+hard_stop = false
+
+# Layout
+title_panel_height_percent = 25
+input_panel_height = 3
+title_panel_position = "top"
+
+# Terminal
+terminal_launcher = "foot -e"
+
+[app_launcher]
+filter_desktop = true
+list_executables_in_path = false
+match_mode = "fuzzy"
+ranking_mode = "frecency"
+pinned_order = "ranking"
+confirm_first_launch = false
+prefix_depth = 3

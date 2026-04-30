@@ -1,0 +1,58 @@
+{
+    "position": "top",
+    "height": 28,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "modules-left": [
+        "pulseaudio",
+        "network",
+        "memory"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "sway/workspaces"
+    ],
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "  Muted",
+        "format-icons": {
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol",
+        "scroll-step": 5
+    },
+    "network": {
+        "format-wifi": "  {essid}",
+        "format-ethernet": "  Wired",
+        "format-disconnected": "  Disconnected",
+        "tooltip-format": "  {essid}\n{ipaddr}",
+        "on-click": ""
+    },
+    "memory": {
+        "format": "  {percentage}%",
+        "interval": 5
+    },
+    "clock": {
+        "format": "{:%H:%M  %d/%m}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "interval": 1
+    },
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "一",
+            "2": "二",
+            "3": "三",
+            "4": "四",
+            "5": "五",
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        }
+    }
+}
