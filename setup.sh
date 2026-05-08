@@ -26,7 +26,7 @@ error() { echo -e "${RED}[-]${NC} $1"; }
 # 1. Create config directories
 # ---------------------------------------------------------------------------
 info "Creating config directories..."
-for dir in sway foot fsel waybar; do
+for dir in sway foot fsel waybar swaylock; do
     mkdir -p "$CONFIG_DIR/$dir"
 done
 
@@ -55,6 +55,7 @@ link "$DOTFILES_DIR/foot/foot.ini"            "$CONFIG_DIR/foot/foot.ini"
 link "$DOTFILES_DIR/fsel/config.toml"         "$CONFIG_DIR/fsel/config.toml"
 link "$DOTFILES_DIR/waybar/config"            "$CONFIG_DIR/waybar/config"
 link "$DOTFILES_DIR/waybar/style.css"         "$CONFIG_DIR/waybar/style.css"
+link "$DOTFILES_DIR/swaylock/config"          "$CONFIG_DIR/swaylock/config"
 
 # ---------------------------------------------------------------------------
 # 3. Install GeistMono Nerd Font
