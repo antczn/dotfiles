@@ -173,6 +173,10 @@ bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 
+# Screenshots
+bindsym Print exec sh -c 'f=~/scsh/$(date +%Y-%m-%d-%H%M%S).png; grim -g "$(slurp)" "$f" && wl-copy --type image/png < "$f"'
+bindsym Ctrl+Print exec sh -c 'f=~/scsh/$(date +%Y-%m-%d-%H%M%S).png; grim "$f" && wl-copy --type image/png < "$f"'
+
 # Brightness (if applicable)
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
