@@ -10,6 +10,7 @@ window#waybar {
 }
 
 #pulseaudio,
+#battery,
 #network,
 #memory {
     padding: 0 10px;
@@ -17,15 +18,15 @@ window#waybar {
 }
 
 #pulseaudio {
-    color: #a6e3a1;
+    color: #dddddd;
 }
 
 #network {
-    color: #a6e3a1;
+    color: #dddddd;
 }
 
 #memory {
-    color: #8b92a5;
+    color: #dddddd;
 }
 
 #clock {
@@ -43,10 +44,7 @@ window#waybar {
     background: transparent;
 }
 
-#workspaces button.focused {
-    color: #a6e3a1;
-}
-
+#workspaces button.focused,
 #workspaces button.active {
     color: #a6e3a1;
 }

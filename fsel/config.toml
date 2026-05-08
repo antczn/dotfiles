@@ -28,6 +28,7 @@ title_panel_position = "top"
 
 # Terminal
 terminal_launcher = "foot -e"
+detach = true
 
 [app_launcher]
 filter_desktop = true

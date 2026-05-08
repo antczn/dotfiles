@@ -50,6 +50,7 @@ link() {
 }
 
 link "$DOTFILES_DIR/sway/config"              "$CONFIG_DIR/sway/config"
+link "$DOTFILES_DIR/sway/walls"              "$CONFIG_DIR/sway/walls"
 link "$DOTFILES_DIR/foot/foot.ini"            "$CONFIG_DIR/foot/foot.ini"
 link "$DOTFILES_DIR/fsel/config.toml"         "$CONFIG_DIR/fsel/config.toml"
 link "$DOTFILES_DIR/waybar/config"            "$CONFIG_DIR/waybar/config"

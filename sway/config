@@ -10,7 +10,7 @@ set $browser helium
 set $editor zed
 set $game_client steam
 set $game_launcher prism-launcher
-set $launcher foot --title fsel -e fsel
+set $launcher foot --title fsel -e /home/cazuni/.cargo/bin/fsel
 set $mod Mod4
 set $alt Mod1
 
@@ -22,13 +22,14 @@ font pango:GeistMono Nerd Font 11
 # ---------------------------------------------------------------------------
 # Output
 # ---------------------------------------------------------------------------
-output * bg #000000 solid_color
+output * bg walls/green.png fill
 
 # ---------------------------------------------------------------------------
 # Input
 # ---------------------------------------------------------------------------
 input type:keyboard {
-    xkb_layout us
+    xkb_layout br
+    xkb_variant abnt2
     repeat_delay 300
     repeat_rate 40
 }
@@ -41,19 +42,18 @@ input type:touchpad {
 # ---------------------------------------------------------------------------
 # Appearance
 # ---------------------------------------------------------------------------
-client.focused          #a6e3a1 #000000 #dddddd #a6e3a1
-client.unfocused        #4c4846 #000000 #8b92a5 #4c4846
-client.focused_inactive #4c4846 #000000 #8b92a5 #4c4846
-client.urgent           #f38ba8 #000000 #dddddd #f38ba8
+client.focused          #a6e3a1 #000000 #dddddd #a6e3a1 #a6e3a1
+client.unfocused        #333333 #000000 #8b92a5 #333333 #333333
+client.focused_inactive #6c9e69 #000000 #8b92a5 #6c9e69 #6c9e69
+client.urgent           #f38ba8 #000000 #dddddd #f38ba8 #f38ba8
 
 # ---------------------------------------------------------------------------
 # Gaps & Border
 # ---------------------------------------------------------------------------
-gaps inner 6
-gaps outer 4
+gaps inner 2
+gaps outer 2
 default_border pixel 2
-default_border_color #4c4846
-default_focused_border_color #a6e3a1
+for_window [tiling] border pixel 2
 
 # ---------------------------------------------------------------------------
 # Startup
@@ -115,7 +115,7 @@ bindsym $mod+d exec $launcher
 bindsym $mod+Return exec $terminal
 
 # Close focused window
-bindsym $mod+q kill
+bindsym $mod+c kill
 
 # Move focus
 bindsym $mod+h focus left
@@ -163,9 +163,9 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Reload / Exit / Lock
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r reload
 bindsym $mod+Shift+e exec swaynag -t warning -m "Exit sway?" -B "Yes, exit" "swaymsg exit"
-bindsym $mod+Shift+l exec swaylock
+bindsym $mod+Shift+c exec swaylock
 
 # Media keys
 bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
